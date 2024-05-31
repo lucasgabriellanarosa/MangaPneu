@@ -9,7 +9,7 @@ const MangaPage = () => {
     let {mangaID} = useParams();
   
     useEffect(() => {
-      fetch(`https://corsproxy.io/?https://api.mangadex.org/manga/${mangaID}/aggregate?translatedLanguage%5B%5D=pt-br`)
+      fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga/${mangaID}/aggregate?translatedLanguage%5B%5D=pt-br`)
       .then(response => response.json())
       .then(data => setMangaData(data.volumes))
     }, [])

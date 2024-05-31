@@ -12,10 +12,10 @@ const ChapterFeed = () => {
 
     let {chapterID} = useParams()
 
-    const baseURL = `https://uploads.mangadex.org/data/${mangaHash}/`
+    const baseURL = `https://uploads.mangadex.dev/data/${mangaHash}/`
 
     useEffect(() => {
-        fetch(`https://corsproxy.io/?https://api.mangadex.org/at-home/server/${chapterID}`)
+        fetch(`https://corsproxy.io/?https://api.mangadex.dev/at-home/server/${chapterID}`)
         .then(response => response.json())
         .then(data => {
             setMangaData(data.chapter.data)

@@ -6,7 +6,7 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState("")
 
   const fetchMangaList = () => {
-    fetch(`https://corsproxy.io/?https://api.mangadex.org/manga?limit=10&title=${searchQuery}`)
+    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=10&title=${searchQuery}`)
     .then(res => res.json())
     .then(data => setMangaList(data.data))
     console.log(mangaList)
