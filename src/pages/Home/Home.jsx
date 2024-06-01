@@ -6,7 +6,7 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState("")
 
   const fetchMangaList = () => {
-    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=10&title=${searchQuery}`)
+    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=10&title=${searchQuery}&order[relevance]=desc`)
     .then(res => res.json())
     .then(data => setMangaList(data.data))
   }
@@ -15,7 +15,6 @@ function Home() {
     setSearchQuery(e.target.value)
     fetchMangaList()
   }
-
   console.log(mangaList)
 
   return(
@@ -27,7 +26,12 @@ function Home() {
       <ul>
         {Object.values(mangaList).map((manga, index) => (
           <li>
-            <Link key={index} to={`/MangaPneu/manga/${manga.id}`}>{manga.attributes.title.en}</Link>
+            { 
+              manga.attributes.title.ja ?
+                <Link key={index} to={`/MangaPneu/${manga.id}`}>{manga.attributes.title.ja}</Link> 
+                : 
+                <Link key={index} to={`/MangaPneu/${manga.id}`}>{manga.attributes.title.en}</Link> 
+            }
           </li>
         ))}
       </ul>
