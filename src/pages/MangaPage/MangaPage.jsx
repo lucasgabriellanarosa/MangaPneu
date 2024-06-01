@@ -13,6 +13,8 @@ const MangaPage = () => {
       .then(response => response.json())
       .then(data => setMangaData(data.volumes))
     }, [])
+
+    const baseURL = `https://mangadex.org/chapter/` 
     
     return (
       <ul>
@@ -22,7 +24,8 @@ const MangaPage = () => {
             <ul>
               {Object.values(volumeData.chapters).map((chaptersData, index) => (
                 <li key={index}>
-                  <Link to={`/mangaPneu/chapter/${chaptersData.id}`}>{chaptersData.chapter}</Link>
+                  <a target='_blank' href={baseURL + chaptersData.id}>{chaptersData.chapter}</a>
+                  {/* <Link to={`/MangaPneu/chapter/${chaptersData.id}`}>{chaptersData.chapter}</Link> */}
                 </li>
               ))}
             </ul>
