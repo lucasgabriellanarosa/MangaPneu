@@ -29,7 +29,7 @@ const MangaPage = () => {
       <ul className='appContainer'>
         <h1>{mangaTitle}</h1>
 
-        <select onChange={e => fetchData(e.target.value)} className='selectContainer'>
+        <select onChange={e => fetchData(e.target.value)} className='maxWidth-300'>
           <option value="pt-br">Português</option>
           <option value="en">English</option>
           <option value="ja">日本語</option>
