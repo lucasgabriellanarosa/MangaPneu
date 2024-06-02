@@ -22,7 +22,7 @@ function Home() {
       value={searchQuery}
       onChange={handleSearchQuery}
       placeholder='Search for a manga...'
-      className='inputSearchManga'
+      className='inputSearchManga maxWidth-300'
       />
       <ul className='listContainer'>
         {Object.values(mangaList).map((manga, index) => (
