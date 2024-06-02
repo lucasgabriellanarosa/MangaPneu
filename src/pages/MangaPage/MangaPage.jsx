@@ -6,22 +6,35 @@ import './mangaPage.css';
 
 const MangaPage = () => {
     const [mangaData, setMangaData] = useState({})
-    const [chapterTitle, setChapterTitle] = useState("")
     let {mangaTitle} = useParams();
     let {mangaID} = useParams();
-  
-    useEffect(() => {
-      fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga/${mangaID}/aggregate?translatedLanguage%5B%5D=en`)
+
+
+    const fetchData = (languageSelected) => {
+      fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga/${mangaID}/aggregate?translatedLanguage%5B%5D=${languageSelected}`)
       .then(response => response.json())
       .then(data => {
         setMangaData(data.volumes)
-      })
+    })
+    }
+
+    useEffect(() => {
+      fetchData("en")
     }, [])
+    
+
     const baseURL = `https://mangadex.org/chapter/`
 
     return (
       <ul className='appContainer'>
         <h1>{mangaTitle}</h1>
+
+        <select onChange={e => fetchData(e.target.value)}>
+          <option value="en">English</option>
+          <option value="pt-br">Português</option>
+          <option value="ja">日本語</option>
+        </select>
+        
         {Object.values(mangaData).map((volumeData, index) => (
           <div key={index} className='volumeContainer'>
             <h3>Volume N°: {volumeData.volume}</h3>

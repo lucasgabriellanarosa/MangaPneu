@@ -16,7 +16,6 @@ function Home() {
     setSearchQuery(e.target.value)
     fetchMangaList()
   }
-
   return(
     <div className='appContainer'>
       <input type="text" 
@@ -33,6 +32,12 @@ function Home() {
                 <Link className='listItem' key={index} to={`/MangaPneu/${manga.attributes.title.ja}/${manga.id}`}>{manga.attributes.title.ja} - {manga.attributes.year}</Link> 
                 : 
                 <Link className='listItem' key={index} to={`/MangaPneu/${manga.attributes.title.en}/${manga.id}`}>{manga.attributes.title.en} - {manga.attributes.year}</Link> 
+            }
+            {
+              manga.attributes.description.en ? 
+                <p>{manga.attributes.description.en}</p>
+                :
+                <p>No description available.</p>
             }
           </li>
         ))}
