@@ -1,0 +1,11 @@
+.volumeContainer{
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.chaptersContainer{
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}

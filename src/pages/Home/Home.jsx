@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
+import './home.css'
 
 function Home() {
   const [mangaList, setMangaList] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
 
   const fetchMangaList = () => {
-    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=10&title=${searchQuery}&order[relevance]=desc`)
+    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=15&title=${searchQuery}`)
     .then(res => res.json())
     .then(data => setMangaList(data.data))
   }
@@ -15,22 +16,23 @@ function Home() {
     setSearchQuery(e.target.value)
     fetchMangaList()
   }
-  console.log(mangaList)
 
   return(
-    <div>
+    <div className='appContainer'>
       <input type="text" 
       value={searchQuery}
       onChange={handleSearchQuery}
+      placeholder='Search for a manga...'
+      className='inputSearchManga'
       />
-      <ul>
+      <ul className='listContainer'>
         {Object.values(mangaList).map((manga, index) => (
-          <li>
+          <li key={index}>
             { 
               manga.attributes.title.ja ?
-                <Link key={index} to={`/MangaPneu/${manga.id}`}>{manga.attributes.title.ja}</Link> 
+                <Link className='listItem' key={index} to={`/MangaPneu/${manga.attributes.title.ja}/${manga.id}`}>{manga.attributes.title.ja} - {manga.attributes.year}</Link> 
                 : 
-                <Link key={index} to={`/MangaPneu/${manga.id}`}>{manga.attributes.title.en}</Link> 
+                <Link className='listItem' key={index} to={`/MangaPneu/${manga.attributes.title.en}/${manga.id}`}>{manga.attributes.title.en} - {manga.attributes.year}</Link> 
             }
           </li>
         ))}
