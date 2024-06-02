@@ -19,7 +19,7 @@ const MangaPage = () => {
     }
 
     useEffect(() => {
-      fetchData("en")
+      fetchData("pt-br")
     }, [])
     
 
@@ -29,9 +29,9 @@ const MangaPage = () => {
       <ul className='appContainer'>
         <h1>{mangaTitle}</h1>
 
-        <select onChange={e => fetchData(e.target.value)}>
-          <option value="en">English</option>
+        <select onChange={e => fetchData(e.target.value)} className='selectContainer'>
           <option value="pt-br">Português</option>
+          <option value="en">English</option>
           <option value="ja">日本語</option>
         </select>
         

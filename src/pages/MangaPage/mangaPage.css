@@ -9,3 +9,7 @@
     flex-direction: column;
     gap: .25rem;
 }
+
+.selectContainer{
+    max-width: 200px;
+}
