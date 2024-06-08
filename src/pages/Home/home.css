@@ -6,6 +6,8 @@
     position: fixed;
     width: 100vw;
     height: 15vh;
+    padding: 1rem .8rem;
+    overflow: hidden;
 }
 
 .appTitleImg{

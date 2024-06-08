@@ -9,15 +9,26 @@ function Home() {
   const [mangaList, setMangaList] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
 
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function() {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(func, delay)
+    }
+  }
+
   const fetchMangaList = () => {
     fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=15&title=${searchQuery}&includes[]=author&includes[]=cover_art`)
     .then(res => res.json())
     .then(data => setMangaList(data.data))
   }
 
+  const debouncedFetchMangaList = debounce(fetchMangaList, 2000)
+
   const handleSearchQuery = (e) => {
     setSearchQuery(e.target.value)
-    fetchMangaList()
+    debouncedFetchMangaList()
   }
 
   console.log(mangaList)
