@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './mangaPage.css';
+import { Link } from 'react-router-dom';
 
 const MangaPage = () => {
     const [mangaData, setMangaData] = useState({})
@@ -22,6 +23,7 @@ const MangaPage = () => {
       fetchData("pt-br")
     }, [])
     
+    console.log(mangaData)
 
     const baseURL = `https://mangadex.org/chapter/`
 
@@ -41,7 +43,7 @@ const MangaPage = () => {
             <ul className='chaptersContainer'>
               {Object.values(volumeData.chapters).map((chaptersData, index) => (
                 <li key={index}>
-                  <a className='listItem' target='_blank' href={baseURL + chaptersData.id}>Chapter N°: {chaptersData.chapter}</a>
+                  <Link className='listItem' to={`/MangaPneu/chapter/${chaptersData.id}`}>Chapter N°: {chaptersData.chapter}</Link>
                 </li>
               ))}
             </ul>

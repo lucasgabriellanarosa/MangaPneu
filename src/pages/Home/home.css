@@ -1,13 +1,38 @@
+.appHeaderContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000000;
+    position: fixed;
+    width: 100vw;
+    height: 15vh;
+}
+
+.appTitleImg{
+    width: 35%;
+}
+
+.navContainer{
+    display: flex;
+    border-bottom: 1px solid white;
+    width: 50%;
+    color: white;
+}
+
 .inputSearchManga{
-    font-size: 1.2rem;
-    padding: 8px 10px;
-    border-radius: 20px;
-    border: 1px solid black;
+    color: white;
+    background: none;
+    border: none;
     outline: none;
+    height: fit-content;
+    padding: 0 5px;
 }
 
 .listContainer{
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 20vh 1rem;
+    background-color: #111111;
+    min-height: 100vh;
 }

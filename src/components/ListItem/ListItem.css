@@ -1,0 +1,18 @@
+.itemContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.listItem{
+    display: flex;
+    flex-direction: column;
+}
+
+.listItemLink{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.listItemAuthor{
+    color: gray;
+}
