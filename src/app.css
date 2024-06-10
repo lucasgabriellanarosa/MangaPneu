@@ -10,4 +10,12 @@ ul{
     list-style: none;
 }
 
-
+.backBtn{
+    font-size: 2rem;
+    position: fixed;
+    left: 0;
+    display: flex;
+    padding: .3rem .4rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #a51107;
+}

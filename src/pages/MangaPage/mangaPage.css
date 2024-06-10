@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
 
+.mangaDataContainer{
+    background-color: #171B27;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .volumeContainer{
     display: flex;
@@ -12,9 +18,7 @@
     flex-direction: column;
     gap: .25rem;
 }
-.appContainer{
-    background-color: #171B27;
-}
+
 .backgroundImage{
     position: absolute;
     top: 0;
@@ -44,16 +48,6 @@
     gap: .8rem;
 }
 
-.backBtn{
-    font-size: 2rem;
-    position: fixed;
-    left: 0;
-    display: flex;
-    padding: .3rem .4rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #a51107;
-}
-
 .mangaDataTitle{
     font-size: 1.75rem;
     color: white;
@@ -64,11 +58,14 @@
 .mangaDataCoverImg{
     width: 80%;
     box-shadow: 0 0 30px black;
+    max-width: 500px;
 }
 
 .mangaDetails{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
     gap: 1rem;
     padding: 2rem 3rem;
 }
@@ -92,14 +89,17 @@
 
 
 .mainContent{
-    padding: 0 1.5rem;
+    padding: 2rem 1.5rem;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
 }
 
 .mainContent select{
     width: 50%;
+    max-width: 300px;
     font-size: 1.2rem;
     padding: .2rem .5rem;
     border-radius: 5px;
@@ -113,4 +113,19 @@
     color: gray;
     text-decoration: none;
     width: fit-content;
+}
+
+
+@media screen and (min-width: 768px) {
+    .volumesGridContainer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .volumesGridContainer{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

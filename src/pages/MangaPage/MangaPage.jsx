@@ -26,7 +26,7 @@ const MangaPage = () => {
 
   useEffect(() => {
 
-    axios.get(`https://api.mangadex.org/manga/${mangaID}?includes%5B%5D=manga&includes%5B%5D=cover_art&includes%5B%5D=author`).then((res) => setMangaData(res.data.data))
+    axios.get(`https://corsproxy.io/?https://api.mangadex.org/manga/${mangaID}?includes%5B%5D=manga&includes%5B%5D=cover_art&includes%5B%5D=author`).then((res) => setMangaData(res.data.data))
 
     fetchVolumesChaptersData("pt-br")
 
@@ -34,8 +34,7 @@ const MangaPage = () => {
 
 
   return (
-    <div className='appContainer'>
-
+    <div className='mangaDataContainer'>
       {
         mangaData.relationships && mangaData.relationships.length > 0 ?
           <>
@@ -56,8 +55,6 @@ const MangaPage = () => {
                 <img className='mangaDataCoverImg' src={`https://uploads.mangadex.org/covers/${mangaData.id}/${mangaData.relationships.find(rel => rel.type === "cover_art").attributes.fileName}`} />
               </div>
 
-
-
             </header>
 
             <div className='mangaDetails'>
@@ -76,27 +73,30 @@ const MangaPage = () => {
       }
 
       <main className='mainContent'>
+
         <select onChange={e => fetchVolumesChaptersData(e.target.value)} className='maxWidth-300'>
           <option value="pt-br">Português</option>
           <option value="en">English</option>
           <option value="ja">日本語</option>
         </select>
+        <div className='volumesGridContainer'>
+          {Object.values(volumeChaptersData).map((volumeData, index) => (
+            <div key={index} className='volumeContainer'>
+              <ul className='chaptersContainer'>
+                <h3>Volume N°: {volumeData.volume}</h3>
+                {Object.values(volumeData.chapters).map((chaptersData, index) => (
+                  <li key={index}>
+                    <Link className='chapterListItem' to={`/MangaPneu/${mangaTitle}/${mangaID}/${chaptersData.id}`}>Chapter N°: {chaptersData.chapter}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-        {Object.values(volumeChaptersData).map((volumeData, index) => (
-          <div key={index} className='volumeContainer'>
-            <h3>Volume N°: {volumeData.volume}</h3>
-            <ul className='chaptersContainer'>
-              {Object.values(volumeData.chapters).map((chaptersData, index) => (
-                <li key={index}>
-                  <Link className='chapterListItem' to={`/MangaPneu/chapter/${chaptersData.id}`}>Chapter N°: {chaptersData.chapter}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
       </main>
-        
-    </div>
+
+    </div >
   )
 }
 

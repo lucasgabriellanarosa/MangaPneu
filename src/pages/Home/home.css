@@ -1,3 +1,9 @@
+.appContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #171B27;
+}
+
 .appHeaderContainer{
     display: flex;
     justify-content: space-around;
@@ -6,19 +12,21 @@
     position: fixed;
     width: 100vw;
     height: 15vh;
-    padding: 1rem .8rem;
+    padding: 4rem .8rem;
     overflow: hidden;
+    gap: 1rem;
 }
 
 .appTitleImg{
-    width: 35%;
+    width: 40%;
+    max-width: 200px;
 }
 
 .navContainer{
     display: flex;
     border-bottom: 1px solid white;
-    width: 50%;
     color: white;
+    justify-content: center;
 }
 
 .inputSearchManga{
@@ -28,6 +36,7 @@
     outline: none;
     height: fit-content;
     padding: 0 5px;
+
 }
 
 .listContainer{
@@ -35,6 +44,29 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 20vh 1rem;
-    background-color: #111111;
     min-height: 100vh;
+}
+
+@media screen and (min-width: 650px) {
+    .navContainer{
+        font-size: 1.3rem;
+    }
+    .inputSearchManga{
+        font-size: 1.3rem;
+    }
+    .listContainer{
+        margin: 0 10vw;
+        padding: 20vh 3rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .appContainer{
+        align-items: center;
+    }
+    .listContainer{
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
+        width: 80%;
+    }
 }

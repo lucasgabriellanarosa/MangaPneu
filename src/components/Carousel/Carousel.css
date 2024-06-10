@@ -1,0 +1,34 @@
+.carouselContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.carousel-image{
+    width: 100%;
+    max-width: 550px;
+}
+
+.carousel-buttons{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.carousel-buttons button{
+    background-color: transparent;
+    font-size: 3rem;
+    color: #a51107;
+    border: none;
+    cursor: pointer;
+}
+
+.carousel-buttons p{
+    color: #a51107;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}

@@ -1,5 +1,6 @@
-.chapterFeedContainer{
+.readMangaContainer{
     display: flex;
-    flex-direction: column;
-    width: 50%;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(20, 20, 20);
 }
