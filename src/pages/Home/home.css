@@ -44,6 +44,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 20vh 1rem;
+    background-color: #111111;
     min-height: 100vh;
 }
 
