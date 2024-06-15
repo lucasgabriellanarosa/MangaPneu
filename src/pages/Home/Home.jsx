@@ -3,7 +3,7 @@ import './home.css'
 import { ListItem } from '../../components/ListItem/ListItem';
 import LogoTitleImage from '../../assets/logoTitle.png'
 import { IoIosSearch } from "react-icons/io";
-import { PacmanLoader } from 'react-spinners';
+import axios from 'axios';
 
 function Home() {
   const [mangaList, setMangaList] = useState([])
@@ -12,9 +12,8 @@ function Home() {
   const fetchMangaList = (e) => {
     e.preventDefault()
     setMangaList([])
-    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=15&title=${searchQuery}&includes[]=author&includes[]=cover_art`)
-      .then(res => res.json())
-      .then(data => setMangaList(data.data))
+    axios.get(`https://corsproxy.io/?https://api.mangadex.dev/manga?limit=15&title=${searchQuery}&includes[]=author&includes[]=cover_art`)
+    .then((res) => setMangaList(res.data.data))
   }
 
   return (
@@ -33,9 +32,8 @@ function Home() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className='inputSearchManga'
           />
-          <IoIosSearch 
-            style={{cursor: "pointer"}}
-          />
+
+          <IoIosSearch />
 
         </form>
       </header>

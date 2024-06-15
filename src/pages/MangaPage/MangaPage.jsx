@@ -13,24 +13,20 @@ const MangaPage = () => {
   let { mangaTitle } = useParams();
   let { mangaID } = useParams();
 
-
   const fetchVolumesChaptersData = (languageSelected) => {
-    fetch(`https://corsproxy.io/?https://api.mangadex.dev/manga/${mangaID}/aggregate?translatedLanguage%5B%5D=${languageSelected}`)
-      .then(response => response.json())
-      .then(data => {
-        setVolumeChaptersData(data.volumes)
-      })
+    axios.get(`https://corsproxy.io/?https://api.mangadex.dev/manga/${mangaID}/aggregate?translatedLanguage%5B%5D=${languageSelected}`)
+    .then((res) => setVolumeChaptersData(res.data.volumes))
   }
-
-
 
   useEffect(() => {
 
-    axios.get(`https://corsproxy.io/?https://api.mangadex.org/manga/${mangaID}?includes%5B%5D=manga&includes%5B%5D=cover_art&includes%5B%5D=author`).then((res) => setMangaData(res.data.data))
+    axios.get(`https://corsproxy.io/?https://api.mangadex.org/manga/${mangaID}?includes%5B%5D=manga&includes%5B%5D=cover_art&includes%5B%5D=author`)
+    .then((res) => setMangaData(res.data.data))
 
     fetchVolumesChaptersData("pt-br")
 
   }, [])
+  
 
 
   return (
